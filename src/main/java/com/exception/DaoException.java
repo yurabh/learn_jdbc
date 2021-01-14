@@ -1,6 +1,7 @@
-package com.dao;
+package com.exception;
 
 public class DaoException extends Exception {
+
     public DaoException() {
         super();
     }

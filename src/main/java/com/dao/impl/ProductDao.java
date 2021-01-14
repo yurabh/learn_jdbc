@@ -1,7 +1,6 @@
-package com.dao.mysqlClasses;
+package com.dao.impl;
 
-import com.dao.AbstractDao;
-import com.dao.DaoException;
+import com.exception.DaoException;
 import com.domain.Product;
 
 import java.sql.Connection;
@@ -19,37 +18,39 @@ public class ProductDao extends AbstractDao<Product, String> {
 
     @Override
     protected String getInsertQuery() {
-        String insertProduct = "INSERT INTO `product` (`product_name`,`product_brand`,`date_manifactore`,`end_datasecond`,`end_date`) VALUES " +
-                "(?,?,?,?,?)";
+        String insertProduct = "INSERT INTO `products` (`product_name`,`product_brand`," +
+                "`date_manufactore`,`end_date_second`,`end_date`) VALUES (?,?,?,?,?)";
         return insertProduct;
     }
 
     @Override
     protected String getSelectQuery() {
-        String selectQuery = "SELECT * FROM `product` WHERE product_name = ?";
+        String selectQuery = "SELECT * FROM `products` WHERE product_name = ?";
         return selectQuery;
     }
 
     @Override
     protected String getDeleteQuery() {
-        String deleteQuery = "DELETE FROM `product` WHERE product_name= ? AND product_brand = ?";
+        String deleteQuery = "DELETE FROM `products` WHERE product_name = ? AND product_brand = ?";
         return deleteQuery;
     }
 
     @Override
     protected String getUpdateQuery() {
-        String updateQury = "UPDATE `product` SET product_brand=? , date_manifactore = ?  WHERE `product_name` = ?";
-        return updateQury;
+        String updateQuery = "UPDATE `products` SET product_brand = ? , date_manufactore = ? " +
+                " WHERE `product_name` = ?";
+        return updateQuery;
     }
 
     @Override
     protected String getSelectAll() {
-        String selectAll = "SELECT * FROM `product`";
+        String selectAll = "SELECT * FROM `products`";
         return selectAll;
     }
 
     @Override
-    protected void setInsertStatement(PreparedStatement preparedStatement, Product object) throws DaoException {
+    protected void setInsertStatement(PreparedStatement preparedStatement, Product object)
+            throws DaoException {
         try {
             preparedStatement.setString(1, object.getNameProduct());
             preparedStatement.setString(2, object.getBrandProduct());
@@ -62,7 +63,7 @@ public class ProductDao extends AbstractDao<Product, String> {
     }
 
     @Override
-    protected void setStatementKey(PreparedStatement preparedStatement, String key) throws DaoException {
+    protected void setStatementKey(PreparedStatement preparedStatement, String key) {
         try {
             preparedStatement.setString(1, key);
         } catch (SQLException e) {
@@ -71,16 +72,17 @@ public class ProductDao extends AbstractDao<Product, String> {
     }
 
     @Override
-    protected void setSelectStateament(PreparedStatement preparedStatement, Product object) throws DaoException {
+    protected void setSelectStatement(PreparedStatement preparedStatement, Product object)
+            throws DaoException {
         try {
             preparedStatement.setString(1, object.getNameProduct());
         } catch (SQLException e) {
-            throw new DaoException("isnt");
+            throw new DaoException("can't select product");
         }
     }
 
     @Override
-    protected void setUpadateStatement(PreparedStatement preparedStatement, Product object) throws DaoException {
+    protected void setUpdateStatement(PreparedStatement preparedStatement, Product object) {
         try {
             preparedStatement.setString(1, object.getBrandProduct());
             preparedStatement.setString(2, String.valueOf(object.getEndDate()));
@@ -91,7 +93,7 @@ public class ProductDao extends AbstractDao<Product, String> {
     }
 
     @Override
-    protected void setDeleteStatement(PreparedStatement preparedStatement, Product object) throws DaoException {
+    protected void setDeleteStatement(PreparedStatement preparedStatement, Product object) {
         try {
             preparedStatement.setString(1, object.getNameProduct());
             preparedStatement.setString(2, object.getBrandProduct());
@@ -101,14 +103,16 @@ public class ProductDao extends AbstractDao<Product, String> {
     }
 
     @Override
-    protected List<Product> parseResultSet(ResultSet resultSet) throws DaoException {
+    protected List<Product> parseResultSet(ResultSet resultSet) {
         List<Product> products = new ArrayList<>();
         try {
             while (resultSet.next()) {
                 Product product = new Product();
                 product.setNameProduct(resultSet.getString(1));
                 product.setBrandProduct(resultSet.getString(2));
-                //product.setDate(resultSet.getDate(3));
+                product.setDate(resultSet.getDate(3).toLocalDate());
+                product.setEndDate(resultSet.getDate(4).toLocalDate());
+                product.setEndDateSecond(resultSet.getDate(5).toLocalDate());
                 products.add(product);
             }
         } catch (SQLException e) {

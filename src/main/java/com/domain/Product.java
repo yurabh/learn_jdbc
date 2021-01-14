@@ -6,16 +6,21 @@ import java.util.Objects;
 public class Product {
 
     private String nameProduct;
-
     private String brandProduct;
-
     private LocalDate date;
-
     private LocalDate endDateSecond;
-
     private LocalDate endDate;
 
     public Product() {
+    }
+
+    public Product(String nameProduct, String brandProduct, LocalDate date, LocalDate endDateSecond,
+                   LocalDate endDate) {
+        this.nameProduct = nameProduct;
+        this.brandProduct = brandProduct;
+        this.date = date;
+        this.endDateSecond = endDateSecond;
+        this.endDate = endDate;
     }
 
     public String getNameProduct() {
