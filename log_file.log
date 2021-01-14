@@ -409,3 +409,23 @@
 2020-11-16 21:09:37 MySqlDaoFactory.java INFO  MySqlDaoFactory:87 - Starting JDBC driver registration
 2020-11-16 21:09:37 MySqlDaoFactory.java INFO  MySqlDaoFactory:40 - Getting connection...
 2020-11-16 21:09:38 MySqlDaoFactory.java INFO  MySqlDaoFactory:42 - Connection done!!!
+2021-01-14 18:18:23 MySqlDaoFactory.java INFO  MySqlDaoFactory:72 - Getting db properties from file
+2021-01-14 18:18:23 MySqlDaoFactory.java INFO  MySqlDaoFactory:78 - Loading db properties done
+2021-01-14 18:18:23 MySqlDaoFactory.java INFO  MySqlDaoFactory:87 - Starting JDBC driver registration
+2021-01-14 18:18:23 MySqlDaoFactory.java INFO  MySqlDaoFactory:40 - Getting connection...
+2021-01-14 18:18:24 MySqlDaoFactory.java INFO  MySqlDaoFactory:42 - Connection done!!!
+2021-01-14 18:18:24 AbstractDao.java TRACE AbstractDao:51 - Insert into our DВ..
+2021-01-14 18:18:24 AbstractDao.java ERROR AbstractDao:59 - problem with inserting our query into our Db
+2021-01-14 18:18:24 AbstractDao.java ERROR AbstractDao:60 - Duplicate entry 'nazar@1234' for key 'email'
+2021-01-14 18:18:24 AbstractDao.java TRACE AbstractDao:64 - Find query in our Db
+2021-01-14 18:18:24 AbstractDao.java TRACE AbstractDao:67 - We are putting our query into the object User
+2021-01-14 18:18:38 MySqlDaoFactory.java INFO  MySqlDaoFactory:72 - Getting db properties from file
+2021-01-14 18:18:38 MySqlDaoFactory.java INFO  MySqlDaoFactory:78 - Loading db properties done
+2021-01-14 18:18:38 MySqlDaoFactory.java INFO  MySqlDaoFactory:87 - Starting JDBC driver registration
+2021-01-14 18:18:38 MySqlDaoFactory.java INFO  MySqlDaoFactory:40 - Getting connection...
+2021-01-14 18:18:38 MySqlDaoFactory.java INFO  MySqlDaoFactory:42 - Connection done!!!
+2021-01-14 18:18:38 AbstractDao.java TRACE AbstractDao:51 - Insert into our DВ..
+2021-01-14 18:18:38 AbstractDao.java ERROR AbstractDao:59 - problem with inserting our query into our Db
+2021-01-14 18:18:38 AbstractDao.java ERROR AbstractDao:60 - Duplicate entry 'nazar@1234' for key 'email'
+2021-01-14 18:18:38 AbstractDao.java TRACE AbstractDao:64 - Find query in our Db
+2021-01-14 18:18:38 AbstractDao.java TRACE AbstractDao:67 - We are putting our query into the object User
